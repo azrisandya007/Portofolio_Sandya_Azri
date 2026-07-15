@@ -10,41 +10,45 @@ html {
 }
 
 /* --- UBAH BAGIAN BAGIAN ATAS CSS ANDA JADI SEPERTI INI --- */
-:root {
-    --bg-main: #ffffff;
-    --bg-grayscale: #f9f9f9;
-    --bg-navbar: rgba(255, 255, 255, 0.95);
-    --bg-card: #ffffff;
-    --text-primary: #111111;
-    --text-secondary: #333333;
-    --text-muted: #666666;
-    --border-color: #eee;
-    --gradient-home: radial-gradient(circle at 90% 10%, #f3f3f3 0%, #ffffff 60%);
+:root{
+    --bg:#ffffff;
+    --text:#222;
+    --text2:#666;
+    --card:#ffffff;
+    --border:#e5e5e5;
+    --navbar:rgba(255,255,255,.92);
+    --section:#f7f7f7;
 }
 
 /* Class pembantu saat dark mode aktif via JavaScript */
-body.dark-mode {
-    --bg-main: #121212;
-    --bg-grayscale: #1e1e1e;
-    --bg-navbar: rgba(18, 18, 18, 0.95);
-    --bg-card: #1d1d1d;
-    --text-primary: #ffffff;
-    --text-secondary: #e0e0e0;
-    --text-muted: #b0b0b0;
-    --border-color: #333333;
-    --gradient-home: radial-gradient(circle at 90% 10%, #1e1e1e 0%, #121212 60%);
+body.dark-mode{
+
+    --bg:#0f172a;
+    --text:#f8fafc;
+    --text2:#cbd5e1;
+    --card:#1e293b;
+    --border:#334155;
+    --navbar:rgba(15,23,42,.95);
+    --section:#111827;
+
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-secondary);
-    background-color: var(--bg-main);
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+body{
+
+    background:var(--bg);
+    color:var(--text);
+
+    transition:.35s ease;
 }
 
 /* Sesuaikan selector yang sudah ada dengan variabel baru ini */
-.navbar { background-color: var(--bg-navbar); border-bottom: 1px solid var(--border-color); }
+.navbar{
+
+    background:var(--navbar);
+    border-bottom:1px solid var(--border);
+
+}
+
 .nav-links a { color: var(--text-muted); }
 .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 .grayscale-bg { background-color: var(--bg-grayscale); }
@@ -64,12 +68,33 @@ body {
 /* --- TAMBAHKAN KODE INI DI BAGIAN PALING BAWAH STYLE.CSS --- */
 
 /* Gaya Tombol Toggle */
-.theme-toggle {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 26px;
-    margin-left: 20px;
+.theme-toggle{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    transition:.3s;
+
+}
+
+.theme-toggle:hover{
+
+    transform:rotate(180deg);
+
 }
 
 .theme-toggle input {
@@ -144,17 +169,16 @@ input:checked + .slider:before {
     margin-left: 30px;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #666;
-    font-size: 15px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+.nav-links a{
+
+    color:var(--text2);
+
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: #000;
-    font-weight: 500;
+.nav-links a.active{
+
+    color:var(--text);
+
 }
 
 /* GENERAL SECTION STYLES */
@@ -166,8 +190,10 @@ input:checked + .slider:before {
     justify-content: center;
 }
 
-.grayscale-bg {
-    background-color: #f9f9f9;
+.grayscale-bg{
+
+    background:var(--section);
+
 }
 
 .section-title {
@@ -267,12 +293,12 @@ input:checked + .slider:before {
     gap: 25px;
 }
 
-.skill-card, .project-card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 6px;
-    border: 1px solid #eee;
-    transition: all 0.3s ease;
+.skill-card,
+.project-card{
+
+    background:var(--card);
+    border:1px solid var(--border);
+
 }
 
 .skill-card:hover, .project-card:hover {
@@ -286,9 +312,13 @@ input:checked + .slider:before {
     font-weight: 500;
 }
 
-.skill-card p, .project-card p {
-    font-size: 14px;
-    color: #666;
+.home-content p,
+.about-text p,
+.skill-card p,
+.project-card p{
+
+    color:var(--text2);
+
 }
 
 /* PROJECT SPECIFIC */
@@ -344,4 +374,10 @@ input:checked + .slider:before {
     .nav-links { display: none; } /* Menyederhanakan tampilan mobile */
     .about-container { flex-direction: column; text-align: center; }
     .home-content h1 { font-size: 36px; }
+}
+
+h1,h2,h3{
+
+    color:var(--text);
+
 }
