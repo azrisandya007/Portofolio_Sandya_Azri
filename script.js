@@ -28,36 +28,41 @@ window.addEventListener('scroll', () => {
 // =========================================================================
 // KODE BARU (Logika Tombol Dark / Light Mode)
 // =========================================================================
-const toggle = document.getElementById("theme-toggle");
+/* ===========================
+   DARK MODE
+=========================== */
 
-// cek localStorage
+const btn = document.getElementById("theme-toggle");
+
+// Load theme
 const savedTheme = localStorage.getItem("theme");
 
-// jika belum ada, ikuti sistem
-if(!savedTheme){
+if(savedTheme==="dark"){
 
-    if(window.matchMedia("(prefers-color-scheme: dark)").matches){
-
-        document.body.classList.add("dark-mode");
-        toggle.textContent="☀️";
-
-    }
-
-}else{
-
-    document.body.classList.toggle("dark-mode",savedTheme==="dark");
-    toggle.textContent=savedTheme==="dark" ? "☀️":"🌙";
+    document.body.classList.add("dark");
+    btn.textContent="☀️";
 
 }
 
-toggle.addEventListener("click",()=>{
+// Toggle
+btn.onclick=()=>{
 
-    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("dark");
 
-    const dark=document.body.classList.contains("dark-mode");
+    if(document.body.classList.contains("dark")){
 
-    toggle.textContent=dark ? "☀️":"🌙";
+        btn.textContent="☀️";
 
-    localStorage.setItem("theme",dark?"dark":"light");
+        localStorage.setItem("theme","dark");
 
-});
+    }else{
+
+        btn.textContent="🌙";
+
+        localStorage.setItem("theme","light");
+
+    }
+
+};
+
+
