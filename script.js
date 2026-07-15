@@ -28,21 +28,36 @@ window.addEventListener('scroll', () => {
 // =========================================================================
 // KODE BARU (Logika Tombol Dark / Light Mode)
 // =========================================================================
-const themeCheckbox = document.getElementById('theme-checkbox');
+const toggle = document.getElementById("theme-toggle");
 
-// 1. Cek apakah di browser kamu sebelumnya sudah pernah pilih dark mode
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeCheckbox.checked = true;
+// cek localStorage
+const savedTheme = localStorage.getItem("theme");
+
+// jika belum ada, ikuti sistem
+if(!savedTheme){
+
+    if(window.matchMedia("(prefers-color-scheme: dark)").matches){
+
+        document.body.classList.add("dark-mode");
+        toggle.textContent="☀️";
+
+    }
+
+}else{
+
+    document.body.classList.toggle("dark-mode",savedTheme==="dark");
+    toggle.textContent=savedTheme==="dark" ? "☀️":"🌙";
+
 }
 
-// 2. Efek ketika tombol toggle diklik/digerakkan
-themeCheckbox.addEventListener('change', () => {
-    if (themeCheckbox.checked) {
-        document.body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark'); // Simpan pilihan dark ke memori browser
-    } else {
-        document.body.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light'); // Simpan pilihan light ke memori browser
-    }
+toggle.addEventListener("click",()=>{
+
+    document.body.classList.toggle("dark-mode");
+
+    const dark=document.body.classList.contains("dark-mode");
+
+    toggle.textContent=dark ? "☀️":"🌙";
+
+    localStorage.setItem("theme",dark?"dark":"light");
+
 });
